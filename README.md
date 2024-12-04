@@ -20,19 +20,13 @@ Welcome to **JSearch-Mobile-App**, a job search platform developed using React N
 
 #### Screenshots
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="./screenshots/home-page.png" alt="Home Page" width="45%">
-  <img src="./screenshots/job-search.png" alt="Job Search" width="45%">
-</div>
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="./screenshots/job-details.png" alt="Job Details" width="45%">
-  <img src="./screenshots/categories.png" alt="Job Categories" width="45%">
-</div>
+  <img src="./screenshots/1.jpg" alt="Home Page" width="25%">
+  <img src="./screenshots/2.jpg" alt="Job Search" width="25%">
+  <img src="./screenshots/3.jpg" alt="Job Details" width=25%">
+  <img src="./screenshots/4.jpg" alt="Job Categories" width="25%">
+  <img src="./screenshots/5.jpg" alt="Apply Job" width="25%">
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="./screenshots/apply-job.png" alt="Apply Job" width="45%">
-</div>
 
 ### Technologies Used
 
@@ -49,29 +43,6 @@ Welcome to **JSearch-Mobile-App**, a job search platform developed using React N
 
 The application communicates with the **JSearch API Service**, which provides endpoints for job searches, job details, and application submissions.
 
-### API Endpoints
-
-1. **Search Jobs**
-   - **Endpoint:** `/api/v1/jobs/search`
-   - **Method:** `GET`
-   - **Parameters:** `query`, `location`, `category`
-   - **Response:** Returns a list of job results matching the search criteria.
-
-2. **Job Details**
-   - **Endpoint:** `/api/v1/jobs/:id`
-   - **Method:** `GET`
-   - **Response:** Detailed job information.
-
-3. **Apply for Job**
-   - **Endpoint:** `/api/v1/jobs/:id/apply`
-   - **Method:** `POST`
-   - **Body:** `user_id`, `resume_url`
-   - **Response:** Confirmation of job application submission.
-
-4. **Recent and Popular Jobs**
-   - **Endpoint:** `/api/v1/jobs/recent`
-   - **Method:** `GET`
-   - **Response:** List of recent and trending job vacancies.
 
 ## Usage Disclaimer
 
