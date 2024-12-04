@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useRouter } from "expo-router";
 import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 
@@ -7,18 +7,27 @@ import { COLORS } from "../../../constants";
 import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
 import useFetch from "../../../hook/useFetch";
 
+
 const Nearbyjobs = () => {
   const router = useRouter();
   const { data, isLoading, error } = useFetch("search", {
     query: "software engineer",
     num_pages: "1",
   });
-  console.log(data)
+  console.log(data);
+
+  // Memoized function to sort jobs by most recent posted date
+  const sortedData = useMemo(() => {
+    if (data) {
+      return data.sort((a, b) => b.job_posted_at_timestamp - a.job_posted_at_timestamp);
+    }
+    return [];
+  }, [data]);
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Nearby jobs</Text>
+        <Text style={styles.headerTitle}>Recent jobs</Text>
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show all</Text>
         </TouchableOpacity>
@@ -26,11 +35,12 @@ const Nearbyjobs = () => {
 
       <View style={styles.cardsContainer}>
         {isLoading ? (
-          <ActivityIndicator size='large' color={COLORS.primary} />
+          <ActivityIndicator size="large" color={COLORS.primary} />
         ) : error ? (
           <Text>Something went wrong</Text>
         ) : (
-          data?.map((job) => (
+          // Rendering the memoized sorted data
+          sortedData.map((job) => (
             <NearbyJobCard
               job={job}
               key={`nearby-job-${job.job_id}`}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, FlatList, Image, TouchableOpacity, View } from 'react-native'
-import { Stack, useRouter } from 'expo-router'
+import { useRouter ,Stack} from 'expo-router'
 import { useLocalSearchParams } from 'expo-router'
 import { Text, SafeAreaView } from 'react-native'
 import axios from 'axios'
@@ -10,6 +10,7 @@ import { ScreenHeaderBtn, NearbyJobCard } from '../../components'
 import { COLORS, icons, SIZES } from '../../constants'
 import styles from '../../styles/search'
 
+
 const JobSearch = () => {
     const params = useLocalSearchParams();
     const router = useRouter()
@@ -18,8 +19,6 @@ const JobSearch = () => {
     const [searchLoader, setSearchLoader] = useState(false);
     const [searchError, setSearchError] = useState(null);
     const [page, setPage] = useState(1);
-
-    
 
     const handleSearch = async () => {
         setSearchLoader(true);
@@ -65,18 +64,10 @@ const JobSearch = () => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
+            {/* Disable header completely */}
             <Stack.Screen
                 options={{
-                    headerStyle: { backgroundColor: COLORS.lightWhite },
-                    headerShadowVisible: false,
-                    headerLeft: () => (
-                        <ScreenHeaderBtn
-                            iconUrl={icons.left}
-                            dimension='60%'
-                            handlePress={() => router.back()}
-                        />
-                    ),
-                    headerTitle: "",
+                    headerShown: false,  // This will hide the header
                 }}
             />
 
