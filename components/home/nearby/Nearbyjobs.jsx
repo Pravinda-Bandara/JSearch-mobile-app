@@ -14,7 +14,6 @@ const Nearbyjobs = () => {
     query: "software engineer",
     num_pages: "1",
   });
-  console.log(data);
 
   // Memoized function to sort jobs by most recent posted date
   const sortedData = useMemo(() => {

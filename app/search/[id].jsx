@@ -12,6 +12,7 @@ import styles from '../../styles/search'
 
 
 const JobSearch = () => {
+    console.log(RAPID_API_KEY)
     const params = useLocalSearchParams();
     const router = useRouter()
 

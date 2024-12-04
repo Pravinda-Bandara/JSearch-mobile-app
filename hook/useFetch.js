@@ -3,6 +3,7 @@ import axios from "axios";
 import { RAPID_API_KEY } from '@env';
 
 const useFetch = (endpoint, query) => {
+  console.log(RAPID_API_KEY)
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
