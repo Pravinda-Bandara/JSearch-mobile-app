@@ -5,6 +5,7 @@ import { COLORS, FONT, SIZES } from "../constants";
 const styles = StyleSheet.create({
     container: {
         width: "100%",
+        padding: SIZES.medium,
     },
     searchTitle: {
         fontFamily: FONT.bold,
@@ -18,14 +19,15 @@ const styles = StyleSheet.create({
         color: COLORS.primary,
     },
     loaderContainer: {
-        marginTop: SIZES.medium
+        marginTop: SIZES.medium,
+        alignItems: 'center',
     },
     footerContainer: {
         marginTop: SIZES.small,
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        gap: 10
+        gap: 10,
     },
     paginationButton: {
         width: 30,

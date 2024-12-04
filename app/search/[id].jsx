@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, FlatList, Image, TouchableOpacity, View } from 'react-native'
-import { useRouter ,Stack} from 'expo-router'
+import { useRouter, Stack } from 'expo-router'
 import { useLocalSearchParams } from 'expo-router'
 import { Text, SafeAreaView } from 'react-native'
 import axios from 'axios'
@@ -71,6 +71,21 @@ const JobSearch = () => {
                 }}
             />
 
+            {/* Header section */}
+            <View style={styles.container}>
+                <Text style={styles.searchTitle}>{params.id}</Text>
+                <Text style={styles.noOfSearchedJobs}>Job Opportunities</Text>
+            </View>
+
+            <View style={styles.loaderContainer}>
+                {searchLoader ? (
+                    <ActivityIndicator size='large' color={COLORS.primary} />
+                ) : searchError && (
+                    <Text>Oops something went wrong</Text>
+                )}
+            </View>
+
+            {/* Scrollable job list */}
             <FlatList
                 data={searchResult}
                 renderItem={({ item }) => (
@@ -81,21 +96,6 @@ const JobSearch = () => {
                 )}
                 keyExtractor={(item) => item.job_id}
                 contentContainerStyle={{ padding: SIZES.medium, rowGap: SIZES.medium }}
-                ListHeaderComponent={() => (
-                    <>
-                        <View style={styles.container}>
-                            <Text style={styles.searchTitle}>{params.id}</Text>
-                            <Text style={styles.noOfSearchedJobs}>Job Opportunities</Text>
-                        </View>
-                        <View style={styles.loaderContainer}>
-                            {searchLoader ? (
-                                <ActivityIndicator size='large' color={COLORS.primary} />
-                            ) : searchError && (
-                                <Text>Oops something went wrong</Text>
-                            )}
-                        </View>
-                    </>
-                )}
                 ListFooterComponent={() => (
                     <View style={styles.footerContainer}>
                         <TouchableOpacity
